@@ -1,63 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Example Webpage</title>
-  <style>
-    /* CSS styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
-    }
-    
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    
-    h1 {
-      margin: 0;
-    }
-    
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    button {
-      padding: 10px 20px;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Home</title>
 </head>
+
 <body>
-  <header>
-    <h1>Example Webpage</h1>
-  </header>
-  
-  <div class="container">
-    <h2>Welcome to my webpage!</h2>
-    <p>This is a simple example of an HTML webpage with CSS and JavaScript.</p>
-    <button id="myButton">Click me!</button>
-    
-    <script>
-      // JavaScript code
-      var button = document.getElementById("myButton");
+  <div class="navbar">
+      <a href="index.html">Home</a>
+        <a href="https://github.com/HoDinhCanh">My Github</a>
+        <a href="https://www.facebook.com/canhho2001">My Facebook</a>
       
-      button.addEventListener("click", function() {
-        alert("Button clicked!");
-      });
-    </script>
+      
   </div>
+  <div class="background-container">
+	<div class="star-container">
+            <div class="star"></div>
+	    <div class="star1"></div>
+	    <div class="star2"></div>
+	    <div class="star3"></div>
+            <div class="star4"></div>
+        </div>
+      <div class="content">
+            <img src="portrait.jpg" alt="Portrait" class="portrait">
+            <h1 style="margin-top:40px;">Hồ Đình Cảnh</h1>
+            <p style="margin:10px;">Date of Birth: 01/02/2001</p>
+            <p style="margin:10px;">Address: Huế, Việt Nam</p>
+            <p style="margin:10px;">Email: hodinhcanh@gmail.com</p>
+    	</div>
+  </div>
+
+  <div class="landscape">
+    <img src="piccv.jpg" alt="Landscape">
+  </div>
+
 </body>
+
 </html>
