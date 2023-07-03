@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Home</title>
+
+</head>
+
+<body>
+  <div class="navbar">
+      <a href="index.html">Home</a>
+        <a href="https://github.com/HoDinhCanh">My Github</a>
+        <a href="https://www.facebook.com/canhho2001">My Facebook</a>
+      
+      
+  </div>
+  <div class="background-container">
+	<div class="star-container">
+            <div class="star"></div>
+	    <div class="star1"></div>
+	    <div class="star2"></div>
+	    <div class="star3"></div>
+            <div class="star4"></div>
+        </div>
+      <div class="content">
+            <img src="pic/Portrait.jpg" alt="Portrait" class="portrait">
+            <h1 style="margin-top:40px;">Hồ Đình Cảnh</h1>
+            <p style="margin:10px;">Date of Birth: 01/02/2001</p>
+            <p style="margin:10px;">Address: Huế, Việt Nam</p>
+            <p style="margin:10px;">Email: hodinhcanh@gmail.com</p>
+    	</div>
+  </div>
+  <div class="container2" style="float: left;">
+    <h2>Calculator</h2>
+    <button class="toggle-button" onclick="toggleCalculator()">Toggle Calculator</button>
+    <div id="calculator" style="display: none;">
+      <input type="text" id="result" readonly>
+      <div class="buttons">
+        <button onclick="appendToInput('7')">7</button>
+        <button onclick="appendToInput('8')">8</button>
+        <button onclick="appendToInput('9')">9</button>
+        <button onclick="appendToInput('+')">+</button>
+        <button onclick="appendToInput('4')">4</button>
+        <button onclick="appendToInput('5')">5</button>
+        <button onclick="appendToInput('6')">6</button>
+        <button onclick="appendToInput('-')">-</button>
+        <button onclick="appendToInput('1')">1</button>
+        <button onclick="appendToInput('2')">2</button>
+        <button onclick="appendToInput('3')">3</button>
+        <button onclick="appendToInput('*')">*</button>
+        <button onclick="appendToInput('0')">0</button>
+        <button onclick="appendToInput('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendToInput('/')">/</button>
+        <button onclick="clearInput()">C</button>
+      </div>
+    </div>
+    
+    <script>
+      // JavaScript code
+      function toggleCalculator() {
+        var calculator = document.getElementById("calculator");
+        if (calculator.style.display === "none") {
+          calculator.style.display = "block";
+        } else {
+          calculator.style.display = "none";
+        }
+      }
+      
+      function appendToInput(value) {
+        document.getElementById("result").value += value;
+      }
+      
+      function calculate() {
+        var input = document.getElementById("result").value;
+        var result = eval(input);
+        document.getElementById("result").value = result;
+      }
+      
+      function clearInput() {
+        document.getElementById("result").value = "";
+      }
+    </script>
+  </div>
+
+
+<div class="container2" style="float: left;">
+    <h2>Tic Tac Toe</h2>
+<button class="toggle-button" onclick="togglettt()">Toggle Tic Tac Toe</button>
+    <div id="tictactoe" style="display: none;">
+    <div class="board">
+      <div class="cell" onclick="makeMove(0, 0)"></div>
+      <div class="cell" onclick="makeMove(0, 1)"></div>
+      <div class="cell" onclick="makeMove(0, 2)"></div>
+      <div class="cell" onclick="makeMove(1, 0)"></div>
+      <div class="cell" onclick="makeMove(1, 1)"></div>
+      <div class="cell" onclick="makeMove(1, 2)"></div>
+      <div class="cell" onclick="makeMove(2, 0)"></div>
+      <div class="cell" onclick="makeMove(2, 1)"></div>
+      <div class="cell" onclick="makeMove(2, 2)"></div>
+    </div>
+    <p class="message" id="message"></p>
+    <button class="play-again" onclick="resetGame()">Play Again</button>
+    </div>
+    <script>
+      // JavaScript code
+      var board = [['', '', ''], ['', '', ''], ['', '', '']];
+      var currentPlayer = 'X';
+      var gameOver = false;
+      var playAgainButton = document.querySelector('.play-again');
+      
+function togglettt() {
+        var tictactoe = document.getElementById("tictactoe");
+        if (tictactoe.style.display === "none") {
+          tictactoe.style.display = "block";
+        } else {
+          tictactoe.style.display = "none";
+        }
+      }
+
+      function makeMove(row, col) {
+        if (!gameOver && board[row][col] === '') {
+          board[row][col] = currentPlayer;
+          document.getElementsByClassName('cell')[row * 3 + col].textContent = currentPlayer;
+          checkWin();
+          togglePlayer();
+        }
+      }
+      
+      function togglePlayer() {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      }
+      
+      function checkWin() {
+        for (var i = 0; i < 3; i++) {
+          if (board[i][0] !== '' && board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
+            gameOver = true;
+            document.getElementById('message').textContent = 'Player ' + board[i][0] + ' wins!';
+            playAgainButton.style.display = 'block';
+            return;
+          }
+          if (board[0][i] !== '' && board[0][i] === board[1][i] && board[1][i] === board[2][i]) {
+            gameOver = true;
+            document.getElementById('message').textContent = 'Player ' + board[0][i] + ' wins!';
+            playAgainButton.style.display = 'block';
+            return;
+          }
+        }
+        
+        if (board[0][0] !== '' && board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+          gameOver = true;
+          document.getElementById('message').textContent = 'Player ' + board[0][0] + ' wins!';
+          playAgainButton.style.display = 'block';
+          return;
+        }
+        
+        if (board[0][2] !== '' && board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+          gameOver = true;
+          document.getElementById('message').textContent = 'Player ' + board[0][2] + ' wins!';
+          playAgainButton.style.display = 'block';
+          return;
+        }
+        
+        if (isBoardFull()) {
+          gameOver = true;
+          document.getElementById('message').textContent = 'It\'s a tie!';
+          playAgainButton.style.display = 'block';
+        }
+      }
+      
+      function isBoardFull() {
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (board[i][j] === '') {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+      
+      function resetGame() {
+        board = [['', '', ''], ['', '', ''], ['', '', '']];
+        currentPlayer = 'X';
+        gameOver = false;
+        playAgainButton.style.display = 'none';
+        document.getElementById('message').textContent = '';
+        var cells = document.getElementsByClassName('cell');
+        for (var i = 0; i < cells.length; i++) {
+          cells[i].textContent = '';
+        }
+      }
+    </script>
+  </div>
+
+<div class="container2" style="float: left;">
+    <h2>Listen Music</h2>
+<button class="toggle-button" onclick="togglemusic()">Toggle Listen Music</button>
+    <div id="music" style="display: none;">
+<div class="audio-player">
+  <select id="music-select">
+    <option value="">Select Music</option>
+    <option value="Music/MMW.mp3">Making My Way</option>
+    <option value="Music/CDTSF.mp3">Cô Đơn Trên SoFa</option>
+    <option value="Music/Whisperers.mp3">Whisperers</option>
+    <option value="Music/KTS.mp3">Không thể say</option>
+  </select>
+  <audio id="myAudio" controls>
+    <source id="audio-source" src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+	</div>
+<script>
+function togglemusic() {
+        var lismusic = document.getElementById("music");
+        if (lismusic.style.display === "none") {
+          lismusic.style.display = "block";
+        } else {
+          lismusic.style.display = "none";
+        }
+      }
+
+
+  var musicSelect = document.getElementById('music-select');
+  var audioSource = document.getElementById('audio-source');
+  var audio = document.getElementById('myAudio');
+
+  musicSelect.addEventListener('change', function() {
+    var selectedMusic = musicSelect.value;
+    if (selectedMusic !== "") {
+      audioSource.src = selectedMusic;
+    } else {
+      audioSource.src = "";
+    }
+    audio.load();
+  });
+
+  playButton.addEventListener('click', function() {
+    audio.play();
+  });
+</script>
+</div>
+
+  <div class="landscape">
+    <img src="pic/piccv.jpg" alt="Landscape">
+  </div>
+
+</body>
+
+</html>
